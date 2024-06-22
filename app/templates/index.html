@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
+<head>
+  <title>Оранжевый Проект - Авторский блог об интересной музыке</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<header class="logoandmenu">
+  <div class="logo">
+    <a href="" class="logo">
+        <img src="{{ url_for('static', filename='img/main/Logo.svg') }}" alt="Оранжевый Проект
+        - Авторский блог об интересной музыке" class="logo-btn">
+    </a>
+  </div>
+
+  <div class="mainmenu">
+    <ul class="menu">
+    <li><a href="#" class="menulinks">Блог</a> </li>
+    <li><a href="#" class="menulinks">Архив Подкаста</a> </li>
+    <li><a href="#" class="menulinks">О проекте</a> </li>
+    </ul>
+  </div>
+</header>
+  <div class="searchbar">
+    <form action="">
+        <input type="search" placeholder="Поиск по блогу...">
+        <i class="fa fa-search"></i>
+    </form>
+  </div>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="content__wrapper">
+        <div class="content-left">
+          <div class="content-left__search"></div>
+          <div class="posts">
+            <h2 class="posts__title">
+              Richard Hawley - In This City They Call You Love (2024)
+            </h2>
+            <span class="posts__tag"></span>
+            <span class="posts__info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo distinctio ut suscipit aut nihil earum deleniti sunt neque beatae, quae hic consequatur mollitia exercitationem quod amet perferendis illo? Eum labore laboriosam dicta iusto veniam optio sequi maxime non ex neque. Hic consequatur sunt temporibus ratione dolorum dolore vero atque laboriosam.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente reprehenderit, dolores sed cupiditate tempora architecto veritatis nobis consequatur labore modi!</span>
+            <div class="posts__navigation">
+              <a href="#" class="posts__full-info">Читать дальше</a>
+              <a href="#" class="posts__comment">
+                <img src="{{ url_for('static', filename='img/main/comment.svg') }}" alt="Комментарии">
+                <span class="comment__counter">12</span>
+              </a>
+            </div>
+              <div class="content__photo">
+                <img src="{{ url_for('static', filename='img/covers/post-1.jpg') }}" alt="Обложка">
+              </div>
+              <!-- /.content__photo -->
+              <div class="content__ender">
+                <div class="content__date">04.05.2024</div>
+                <div class="content__links">
+                  <a href="#" class="vk__link"> <img src="{{ url_for('static', filename='img/main/vk.svg') }}"
+                                                     alt="Vkontakte"></a>
+                  <a href="#" class="tg__link"> <img src="{{ url_for('static', filename='img/main/tg.svg') }}" alt="Telegram"></a>
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- /.content__left -->
+        <a href="#" class="content-right">
+
+          <h2 class="content-right__title">Случайный подкаст</h2>
+          <div class="content-right__photo">
+            <img class="photo__right" src="{{ url_for('static', filename='img/podcasts/img-1.jpg') }}" alt="Постер">
+          </div>
+          <span class="subtitle">Выпуск 105 - Иосиф Кобзон</span><br>
+          <span class="content-right__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quidem!</span>
+        </a>
+        <!-- /.content__right -->
+
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
