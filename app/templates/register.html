@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Регистрация</title>
 </head>
 <body>
+    <form action="{{ url_for('register') }}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
 
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="password2">Confirm Password:</label>
+        <input type="password" id="password2" name="password2" required><br>
+
+        <label for="favourite_genres">Favourite Genres:</label><br>
+        {% for genre in genres %}
+            <input type="checkbox" id="genre{{ genre.id }}" name="favourite_genres" value="{{ genre.id }}">
+            <label for="genre{{ genre.id }}">{{ genre.name }}</label><br>
+        {% endfor %}
+
+        <button type="submit">Register</button>
+    </form>
 </body>
 </html>

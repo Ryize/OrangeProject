@@ -1,14 +1,18 @@
 from sqlite3 import IntegrityError
+from flask_login import login_user
 
 from flask import Blueprint, request, redirect, render_template, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from ..extensions import db
-from ..models import User
+from ..models.user import User
+import json
+
+
 register = Blueprint('register', __name__)
 
 
 @register.route('/register', methods=['GET', 'POST'])
-def register():
+def register() -> Response | str:
     """
     Обрабатывает страницу регистрации. При GET запросе отображает страницу
     регистрации.
@@ -21,20 +25,35 @@ def register():
             - обратно на страницу регистрации при возникновении ошибки.
      """
     if request.method == 'GET':
-        return render_template('register.html')
-    login = request.form.get('login')
+        with open('path/to/genres.json', 'r', encoding='utf-8') as f:
+            genres = json.load(f)
+        return render_template('register.html', genres=genres)
+
+    username = request.form.get('username')
+    email = request.form.get('email')
     password = request.form.get('password')
-    if not (3 < len(login) < 32 and 3 < len(password) < 32):
+    password2 = request.form.get('password2')
+    favourite_genres = request.form.getlist('favourite_genres')
+
+    if not (3 < len(username) < 32 and 3 < len(password) < 32):
         flash('Логин и пароль должны быть от 4 до 31 символов.')
         return redirect(url_for('register'))
+
+    if password != password2:
+        flash('Пароли не совпадают.')
+        return redirect(url_for('register'))
+
+    favourite_genres_json = json.dumps(favourite_genres)
+
     password = generate_password_hash(password)
-    user = User(login=login, password=password)
+    user = User(username=username, email=email, password=password,
+                favourite_genres=favourite_genres_json)
     try:
         db.session.add(user)
         db.session.commit()
-        login_user(user)
+        login_user(user, remember=True)
         return redirect(url_for('index'))
     except IntegrityError:
-        flash('Данный логин уже используется.')
+        flash('Такой логин или E-mail уже используется!')
         return redirect(url_for('register'))
     # Пользователь с таким логином уже зарегистрирован
