@@ -1,24 +1,27 @@
+from datetime import datetime
+
 from ..extensions import db
 import json
 
 
-def load_genres():
-    with open('genres.json', 'r') as file:
-        return json.load(file)
-
-
-genres = load_genres()
+# def load_genres():
+#     with open('genres.json', 'r') as file:
+#         return json.load(file)
+#
+#
+# genres = load_genres()
 
 
 # Модель для таблицы Пользователь (User)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
+    status = db.Column(db.String(50), default='user')
+    username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=True)
-    password = db.Column(db.String(60), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
+    avatar = db.Column(db.String(200))
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     favourite_genres = db.Column(db.String, nullable=True)  # Список жанров в виде строки
-    posts = db.relationship('Post', backref='author', lazy=True)
-    comments = db.relationship('Comment', backref='author', lazy=True)
 
     def set_favourite_genres(self, genre_ids):
         self.favourite_genres = json.dumps(genre_ids)
@@ -28,8 +31,3 @@ class User(db.Model):
 
     def __repr__(self) -> str:
         return f"User('{self.username}', '{self.email}')"
-
-
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()

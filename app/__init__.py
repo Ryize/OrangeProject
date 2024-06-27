@@ -5,13 +5,14 @@ from .config import Config
 # from .routes.main import main
 from .admin import init_admin
 from .routes.main import main
+from .routes.register import registration
 
 
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # app.register_blueprint(tool)
+    app.register_blueprint(registration)
     app.register_blueprint(main)
 
     db.init_app(app)

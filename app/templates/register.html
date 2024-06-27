@@ -1,30 +1,17 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Регистрация</title>
-</head>
-<body>
-    <form action="{{ url_for('register') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
+{% extends 'main/base.html' %}
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+{% block title %}Регистрация{% endblock %}
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+{% block content %}
+<form method="post" enctype="multipart/form-data"
+      class="form-control d-flex flex-column gap-2">
+    {{ form.csrf_token }}
+    {{ form.username (class="form-control", placeholder="Логин") }}
+    {{ form.email (class="form-control", placeholder="Email") }}
+    {{ form.password (class="form-control", placeholder="Пароль") }}
+    {{ form.password2 (class="form-control", placeholder="Повторите пароль") }}
+    {{ form.avatar (class="form-control") }}
+    {{ form.submit (class="btn btn-success" }}
+</form>
 
-        <label for="password2">Confirm Password:</label>
-        <input type="password" id="password2" name="password2" required><br>
-
-        <label for="favourite_genres">Favourite Genres:</label><br>
-        {% for genre in genres %}
-            <input type="checkbox" id="genre{{ genre.id }}" name="favourite_genres" value="{{ genre.id }}">
-            <label for="genre{{ genre.id }}">{{ genre.name }}</label><br>
-        {% endfor %}
-
-        <button type="submit">Register</button>
-    </form>
-</body>
-</html>
+{% endblock %}

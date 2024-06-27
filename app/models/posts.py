@@ -2,11 +2,11 @@ from ..extensions import db
 import json
 from datetime import datetime
 
-def load_genres():
-    with open('genres.json', 'r') as file:
-        return json.load(file)
+# def load_genres():
+#     with open('genres.json', 'r') as file:
+#         return json.load(file)
 
-genres = load_genres()
+# genres = load_genres()
 
 # Модель для таблицы Посты (Posts)
 class Post(db.Model):
@@ -16,8 +16,7 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     associated_genres = db.Column(db.String, nullable=True)
     comment_count = db.Column(db.Integer, default=0)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    comments = db.relationship('Comment', backref='post', lazy=True)
+    user_id = db.Column(db.Integer, nullable=False)
     def set_associated_genres(self, genre_ids):
         self.associated_genres = json.dumps(genre_ids)
 
@@ -26,7 +25,3 @@ class Post(db.Model):
 
     def __repr__(self) -> str:
         return f"Post('{self.title}', '{self.date_posted}')"
-
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
