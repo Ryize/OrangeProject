@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-input{
+    height: 45px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    border: 2px solid #e9f2ff;
+    border-radius: 5px;
+    padding-left: 23px;
+}
+
+.form-title{
+    color: #30507d;
+    font-weight: 500;
+    margin-bottom: 38px;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.register-form-container{
+    max-width: 415px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0px 6px 50px rgba(217, 299, 255, 0.7);
+    border-radius: 20px;
+    padding: 38px;
+}
+
+
+.form-input:focus{
+    outline: none;
+    border: 2px solid #fb930033;
+}
+
+.form-field{
+    margin-bottom: 13px;
+}
+
+.register-button{
+    display: flex;
+    justify-content: center;  /* Горизонтальное центрирование */
+    align-items: center;      /* Вертикальное центрирование */
+    margin: auto;
+    width: 100%;
+    height: 35px;
+    background: #dda311;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    line-height: 45px;
+}
+
+.register-button:hover{
+    background-color: #c8a103;
+    cursor: pointer;
+}

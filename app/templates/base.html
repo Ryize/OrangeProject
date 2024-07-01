@@ -2,14 +2,15 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    {% block link %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 
  <div class="page">
-    <header class="header">{%include 'main/_header.html' %}</header>
+{#    <header class="header">{%include 'main/_header.html' %}</header>#}
     <main class="content">{% block content %}{% endblock %}</main>
-    <footer>{%include 'main/_footer.html' %}</footer>
+{#    <footer>{%include 'main/_footer.html' %}</footer>#}
  </div>
 </body>
 </html>

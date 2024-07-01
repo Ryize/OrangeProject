@@ -1,17 +1,30 @@
-{% extends 'main/base.html' %}
+{% extends 'base.html' %}
 
+{% block link %} <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}"> {% endblock %}
 {% block title %}Регистрация{% endblock %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data"
-      class="form-control d-flex flex-column gap-2">
-    {{ form.csrf_token }}
-    {{ form.username (class="form-control", placeholder="Логин") }}
-    {{ form.email (class="form-control", placeholder="Email") }}
-    {{ form.password (class="form-control", placeholder="Пароль") }}
-    {{ form.password2 (class="form-control", placeholder="Повторите пароль") }}
-    {{ form.avatar (class="form-control") }}
-    {{ form.submit (class="btn btn-success" }}
-</form>
+        <div class="circle"> </div>
+        <div class="register-form-container">
+            <h1 class="form-title"> Регистрация</h1>
+            <div class="form-fields">
+                <div class="form-field">
+                    <input class="form-input" type="text" name="username" placeholder="Логин">
+                </div>
+                <div class="form-field">
+                    <input class="form-input" type="text" name="email" placeholder="Почта">
+                </div>
+                <div class="form-field">
+                    <input class="form-input" type="text" name="password" placeholder="Пароль">
+                </div>
+                <div class="form-field">
+                    <input class="form-input" type="text" name="password2" placeholder="Подтвердите пароль">
+                </div>
+
+            </div>
+            <div class="form_butons">
+                <button class="button"> Зарегистрироваться</button>
+            </div>
+        </div>
 
 {% endblock %}
