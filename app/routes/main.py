@@ -3,6 +3,7 @@ from ..extensions import db
 
 main = Blueprint('main', __name__)
 
+@main.route('/index', methods=['GET'])
 @main.route('/', methods=['GET'])
 def index():
     """
@@ -11,5 +12,5 @@ def index():
     Returns:
         str: HTML-шаблон 'base.html' для отображения главной страницы.
     """
-    return render_template('index.html')
+    return render_template('main/index.html')
 

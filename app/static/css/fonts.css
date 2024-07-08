@@ -1,0 +1,17 @@
+/* Fonts EB_Garamond */
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('../fonts/EB_Garamond/EBGaramond-VariableFont_wght.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('../fonts/Roboto/Roboto-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
